@@ -20,8 +20,10 @@ class LinkedList:
             self.last.next = self.last = Node(x, None)
 
         self.length += 1
-
-    def pop(self, index):
+        
+#___________________________________________________
+"""addition functions not natural for sortet list"""
+      def pop(self, index):
         current = self.first
         if index == 0:
             self.first = current.next
@@ -33,7 +35,7 @@ class LinkedList:
 
         current.next = current.next.next
         self.length -= 1
-
+ 
     def insert(self, index, x):
         if index == 0:
             self.first = Node(x, self.first)
@@ -52,6 +54,7 @@ class LinkedList:
         self.__init__()
 
     def __str__(self):
+        """"magic method for list printing"""
         if self.length == 0:
             return '[]'
 
@@ -65,7 +68,7 @@ class LinkedList:
                 out_list += str(current.value) + ', '
             current = current.next
             count += 1
-
+            
         return out_list
 
 l = LinkedList()
