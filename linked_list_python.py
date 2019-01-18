@@ -20,6 +20,24 @@ class LinkedList:
             self.last.next = self.last = Node(x, None)
 
         self.length += 1
+    
+    def __str__(self):
+        """"magic method for list printing"""
+        if self.length == 0:
+            return '[]'
+
+        current = self.first
+        out_list = '['
+        count = 0
+        while(current!= None):
+            if count == self.length - 1:
+                out_list += str(current.value) + ']\n'
+            else:
+                out_list += str(current.value) + ', '
+            current = current.next
+            count += 1
+            
+        return out_list
         
 #___________________________________________________
 """addition functions not natural for sortet list"""
@@ -52,24 +70,6 @@ class LinkedList:
 
     def clear(self):
         self.__init__()
-
-    def __str__(self):
-        """"magic method for list printing"""
-        if self.length == 0:
-            return '[]'
-
-        current = self.first
-        out_list = '['
-        count = 0
-        while(current!= None):
-            if count == self.length - 1:
-                out_list += str(current.value) + ']\n'
-            else:
-                out_list += str(current.value) + ', '
-            current = current.next
-            count += 1
-            
-        return out_list
 
 l = LinkedList()
 A = [1, 3, 5, 3, 7, 7, 9]
