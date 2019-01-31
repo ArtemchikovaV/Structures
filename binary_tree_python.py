@@ -19,6 +19,7 @@ class BinaryTree():
         if root == None:
             root = TreeNode(value)
             return root
+
         if value < root.value:
             root.leftChild = self._add(value, root.leftChild)
         else:
@@ -55,11 +56,56 @@ class BinaryTree():
             else:
                 node = node.leftChild
 
+    def preOrder(self):
+        result = []
+        self._preOrder(self.root, result)
+        return result
+
+    def _preOrder(self, root, result):
+        if root == None:
+            return
+
+        result.append(root.value)
+        self._preOrder(root.leftChild, result)
+        self._preOrder(root.rightChild, result)
+
+    def inOrder(self):
+        result = []
+        self._inOrder(self.root, result)
+        return result
+
+
+    def _inOrder(self, root, result):
+        if root == None:
+            return
+
+        self._inOrder(root.leftChild, result)
+        result.append(root.value)
+        self._inOrder(root.rightChild, result)
+
+
+    def postOrder(self):
+        result = []
+        self._postOrder(self.root, result)
+        return result
+
+    def _postOrder(self, root, result):
+        if root == None:
+            return
+
+        self._postOrder(root.leftChild, result)
+        self._postOrder(root.rightChild, result)
+        result.append(root.value)
+
 
 tree = BinaryTree()
 date = [4, 6, 7, 2, 3, 9, 0, 4, 6, 5]
 for x in date:
     tree.add(x)
+
+print(tree.preOrder())
+print(tree.inOrder())
+print(tree.postOrder())
 print(tree.min())
 print(tree.max())
 print(tree.search(5))
